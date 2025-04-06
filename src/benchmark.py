@@ -3,6 +3,7 @@ import requests
 from dotenv import load_dotenv
 import os
 from src.utils import timeit, evaluate_response_with_llm, evaluate_metric_with_llm
+from src.prompts import load_prompts
 
 load_dotenv()
 API_KEY = os.getenv("OPENROUTER_API_KEY")
@@ -13,7 +14,9 @@ HEADERS = {
 }
 
 @timeit
-def run_prompt(model, prompt):
+def run_prompt(model, category, language="id"):
+    prompts = load_prompts(language)
+    prompt = prompts.get(category, "Invalid category")
     payload = {
         "model": model,
         "messages": [{"role": "user", "content": prompt}]

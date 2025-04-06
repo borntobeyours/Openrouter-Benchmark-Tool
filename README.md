@@ -7,7 +7,7 @@ A benchmarking tool for comparing multiple language models via OpenRouter API wi
 - Benchmark multiple LLMs (OpenAI, Anthropic, Google, Mistral, Llama, etc.)
 - Automated evaluator scoring using GPT-4 or other LLMs
 - Cost estimation per 1K tokens
-- Streamlit-based UI for easy interaction
+- Streamlit-based UI for easy interaction with language support for Indonesian and English
 - Supports adding custom prompts and models
 - Saves detailed logs of benchmark results
 
@@ -16,7 +16,7 @@ A benchmarking tool for comparing multiple language models via OpenRouter API wi
 ### 1. Clone the repository
 
 ```bash
-git clone https://your-repo-url.git
+git clone https://github.com/borntobeyours/Openrouter-Benchmark-Tool.git
 cd openrouter-benchmark
 ```
 
@@ -35,17 +35,29 @@ pip install -r requirements.txt
 
 ### 4. Set API keys
 
-Create a `.env` file in the root directory with your OpenRouter API key:
+1. Create a `.env` file in the root directory.
+2. Add your OpenRouter API key:
+   ```
+   OPENROUTER_API_KEY=your_openrouter_api_key
+   ```
+3. For UI-side evaluation (optional), set your OpenAI API key as an environment variable or within your code.
 
+### 5. Prepare Prompts
+
+The tool supports benchmarking in both Indonesian and English. To edit or add prompts:
+
+1. For Indonesian prompts, modify `prompts/id_prompts.json`
+2. For English prompts, modify `prompts/en_prompts.json`
+
+Each JSON file contains categories as keys and corresponding prompts as values. You can add new categories or modify existing prompts as needed.
+
+Example structure:
+```json
+{
+  "category_name": "Your prompt here",
+  "another_category": "Another prompt here"
+}
 ```
-OPENROUTER_API_KEY=your_openrouter_api_key
-```
-
-For UI-side evaluation (optional), set your OpenAI API key as environment variable or within your code.
-
-### 5. Prepare prompts
-
-Edit or add prompts in `prompts/default_prompts.json`.
 
 ## Usage
 
